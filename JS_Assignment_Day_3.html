@@ -1,0 +1,184 @@
+<html>
+<title>
+    JS_Assignment_Day_3
+</title>
+
+<head>
+    JS_Assignment_Day_3
+</head>
+
+<body>
+    <script>
+
+        // 1. Hello, object
+        // 1. Create an empty object user.
+        /*
+            let user = {};
+            // OR let user = new Object();
+        
+            // 2. Add the property name with the value John.
+        
+                // i) Defining property dynamically
+        
+                user.Name = "John"; 
+                // OR
+                    // Object.defineProperty(user,"Name",
+                    // {
+                    //     value:"John",
+                    //     writable:true,
+                    //     enumerable:true
+                    // });
+        
+        
+            // 3. Add the property surname with the value Smith.
+        
+                user.SurName = "Smith";
+                // OR 
+                // Object.defineProperty(user,"SurName",
+                // {
+                //     value = "Smith",
+                //     writable:true,
+                //     enumerable:true
+                // });
+        
+                // 4. Change the value of the name to Pete.
+                    user.Name = "Pete";
+        
+                //5. Remove the property name from the object.
+                delete user.Name;
+        */
+        // 2. Check for emptiness
+        /*            
+                    let schedule = {};
+                    schedule["8:30"] = "get up";
+        
+                    function isEmpty(obj)
+                    {
+                        for(let prop in obj)
+                        {
+                           return true;
+                        }
+                        return false;
+                    }
+        
+                   if(isEmpty(schedule) === true)
+                   {
+                       alert("Object has some Properties");
+                   }
+                   else
+                   {
+                    alert("Object doen not contains Properties");
+                   }
+        */
+        // 3. Constant objects?
+        // Is it possible to change an object declared with const? What do you think?
+
+        const user = { name: "John" }; // Yes we can declare Constant Object
+
+        user.name = "Pete"; // Right and working
+
+        // 4. Sum object properties
+        // We have an object storing salaries of our team:           
+        /*
+                    let salaries =
+                     {
+                        John:100,
+                        Anne:160,
+                        Pete:130
+                     }
+        
+                     let sum = 0;   
+                    //  let values = Object.values(salaries);
+                     
+                    //  for (let salary of values)
+                    //  {
+                    //      sum = sum+salary;
+                    //  }
+        
+                     //OR
+        
+                     for (let key in salaries)
+                     {
+                         sum = sum+salaries[key];
+                     }
+                     
+                         alert(`Sum: ${sum}`);
+        */
+        // 5. Multiply numeric properties by 2
+        // Create a function multiplyNumeric(obj) that multiplies all numeric properties of obj by 2.
+        /*
+                    let menu = {
+                                    width: 200,
+                                    height: 300,
+                                    title: "My menu"
+                                };
+        
+                                alert("Original Values of object : "+JSON.stringify(menu));
+        
+        
+                    function multiplyNumeric(obj)
+                    {
+                        for ( let item in obj)
+                        {
+        
+                            if (typeof(obj[item]) === "number")
+                        {
+                            obj[item] = obj[item]*2;
+                        }
+                        }
+                    }
+        
+                    multiplyNumeric(menu);
+                    alert("after multipies to numeric properties Values of object : "+JSON.stringify(menu));
+        */
+
+        // 6. Create an object calculator with three methods: 
+        // read() prompts for two values and saves them as object properties. 
+        // sum() returns the sum of saved values.
+        // mul() multiplies saved values and returns the result.
+
+        let calculator = {
+            sum() { return this.a + this.b },
+
+            multiply() { return this.a * this.b },
+
+            read() {
+                this.a = +prompt("Enter value of a : ", 0);
+                this.b = +prompt("Enter value of b : ", 0);
+            }
+        };
+
+        calculator.read();
+        alert("Sum : " + calculator.sum());
+        alert("Multiplication : " + calculator.multiply());
+
+
+        // 7. There’s a ladder object that allows to go up and down:
+        /*
+        let ladder = {
+            step: 0,
+            up() {
+                this.step++;
+                return this;
+            },
+            down() {
+                this.step--;
+                return this;
+            },
+            showStep: function () {
+                alert(this.step);
+                return this;
+            }
+        };
+
+        ladder.up().up().down().showStep();
+        // ladder.up();
+        // ladder.down();
+        // ladder.showStep();
+*/
+
+
+    </script>
+</body>
+
+</html>

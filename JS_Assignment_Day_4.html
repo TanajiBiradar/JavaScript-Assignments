@@ -1,0 +1,65 @@
+<html>
+<title>JS_Assignment_Day_4</title>
+
+<head>JS_Assignment_Day_4
+    <script src="jquery-3.3.1.js">
+    </script>
+</head>
+
+<body>
+    Name : <input id="txtName" type="text">
+    Contact : <input id="txtContact" type="number">
+    Email : <input id="txtEmail" type="email">
+
+    <button id="btnAdd" onclick="AddToTable">Add to Table</button>
+    <button id="btnClear">Clear</button>
+    <table id="PersonTable" style="width:50%" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+        </tr>
+    </table>
+
+    <script>
+
+
+
+        $(document).ready(function () {
+            let objPerson = {
+                Name: "",
+                Contact: "",
+                Emial: ""
+            }
+
+            let larrTableData = [];
+
+
+
+            function AddToTable() {
+                debugger
+                objPerson.Name = $("#txtName").val();
+                objPerson.Contact = $("#txtContact").val();
+                objPerson.Email = $("#txtEmail").val();
+
+
+
+                larrTableData.push(objPerson);
+                document.getElementById('PersonTable').innerHTML = "<tr><td>" + objPerson.Name + "</td><td>" + objPerson.Contact + "</td><td>" + objPerson.Email + "</td></tr>";
+
+            }
+
+
+
+
+
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
