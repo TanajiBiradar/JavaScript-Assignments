@@ -1,65 +1,129 @@
 <html>
-<title>JS_Assignment_Day_4</title>
 
-<head>JS_Assignment_Day_4
-    <script src="jquery-3.3.1.js">
+<head>
+    <title>JS_Assignment_Day_4 </title>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#btnAdd").click(function AddToTable() {
+                let Name = $("#txtName").val();
+                let Contact = $("#txtContact").val();
+                let Email = $("#txtEmail").val();
+
+                let lblnIsEmpty = false;
+                if (jQuery.trim(Name) == "") {
+                    $("#txtName").addClass('errorClass');
+                    $("#ErrorDiv").append("<li>Please Enter Name.</li>").css("color", "Red");
+                    lblnIsEmpty = true;
+                }
+                if (jQuery.trim(Contact) == "") {
+                    $("#txtContact").addClass('errorClass');
+                    $("#ErrorDiv").append("<li>Please Enter Contact.</li>").css("color", "Red");
+                    lblnIsEmpty = true;
+                }
+                if (jQuery.trim(Email) == "") {
+                    $("#txtEmail").addClass('errorClass');
+                    $("#ErrorDiv").append("<li>Please Enter Email.</li>").css("color", "Red");
+                    lblnIsEmpty = true;
+                }
+                if (lblnIsEmpty) {
+                    return;
+                }
+
+                let data = "<tr><td><input type='checkbox' name='record'></td><td>" + Name + "</td><td>" + Contact + "</td><td>" + Email + "</td></tr>";
+                $("table tbody").append(data);
+
+            });
+
+            $("#btnClear").click(function () {
+                $("#txtName").val("").removeClass('errorClass');
+                $("#txtContact").val("").removeClass('errorClass');
+                $("#txtEmail").val("").removeClass('errorClass');
+                $("#ErrorDiv").empty();
+            });
+
+            $("#txtName").click(() => {
+                if ($("#txtName").hasClass('errorClass') === true) {
+                    $("#txtName").removeClass('errorClass');
+                }
+            });
+
+            $("#txtContact").click(() => {
+                if ($("#txtContact").hasClass('errorClass') === true) {
+                    $("#txtContact").removeClass('errorClass');
+                }
+            });
+
+            $("#txtEmail").click(() => {
+                if ($("#txtEmail").hasClass('errorClass') === true) {
+                    $("#txtEmail").removeClass('errorClass');
+                }
+            });
+        });
+
     </script>
+    <style type="text/css">
+        form {
+            margin: 20px 0;
+        }
+
+        form input,
+        button {
+            padding: 5px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        table th,
+        table tr {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .errorClass {
+            border: 1px solid red;
+        }
+    </style>
 </head>
 
 <body>
-    Name : <input id="txtName" type="text">
-    Contact : <input id="txtContact" type="number">
-    Email : <input id="txtEmail" type="email">
+    <div id="ErrorDiv">
+        <ul>
 
-    <button id="btnAdd" onclick="AddToTable">Add to Table</button>
-    <button id="btnClear">Clear</button>
-    <table id="PersonTable" style="width:50%" border="1">
-        <tr>
-            <th>Name</th>
-            <th>Contact</th>
-            <th>Email</th>
-        </tr>
-    </table>
+        </ul>
+    </div>
+    <form>
+        Name : <input id="txtName" type="text">
+        Contact : <input id="txtContact" type="number">
+        Email : <input id="txtEmail" type="email"><br><br>
 
-    <script>
+        <!-- <input id="btnAdd" type="button" value="Add To Table"> -->
+        <button type="button" id="btnAdd">Add to Table</button>
+        <button type="button" id="btnClear">Clear</button><br><br>
+        <table id="PersonTable" style="width:50%" border="1">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
 
-
-
-        $(document).ready(function () {
-            let objPerson = {
-                Name: "",
-                Contact: "",
-                Emial: ""
-            }
-
-            let larrTableData = [];
-
-
-
-            function AddToTable() {
-                debugger
-                objPerson.Name = $("#txtName").val();
-                objPerson.Contact = $("#txtContact").val();
-                objPerson.Email = $("#txtEmail").val();
-
-
-
-                larrTableData.push(objPerson);
-                document.getElementById('PersonTable').innerHTML = "<tr><td>" + objPerson.Name + "</td><td>" + objPerson.Contact + "</td><td>" + objPerson.Email + "</td></tr>";
-
-            }
-
-
-
-
-
-
-        });
-
-
-
-    </script>
-
+            </tbody>
+        </table>
 </body>
 
 </html>
